@@ -1,0 +1,36 @@
+#Front End 
+
+// Calling API
+
+
+test(){  
+        return axios.get('http://localhost:8080/api/users', { withCredentials: true });
+    }
+
+useEffect(async () => {
+    var bodyFormData = new FormData();
+    bodyFormData.append('username', 'john');
+    bodyFormData.append('password', '1234');
+
+    axios({
+      method: "post",
+      url: "http://localhost:8080/api/login",
+      data: bodyFormData, 
+      withCredentials: true
+    })
+      .then(function (response) {
+        //handle success
+        console.log(response);
+      })
+      .catch(function (response) {
+        //handle error
+        console.log(response);
+      });
+
+    const test = async () => {
+      const res = await UserService.test();
+      console.log(res)
+    };
+
+    test()
+  }, []);
